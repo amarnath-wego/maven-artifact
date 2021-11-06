@@ -1,0 +1,36 @@
+<!-- NOTE: MAKE SURE THAT settings.xml IS NOT WORLD READABLE! -->
+<settings>
+    <servers>
+        <server>
+            <id>github</id>
+            <username><<em>amarnath-wego</em>></username>
+            <password><<em>@m@r123!</em>></password>
+        </server>
+    </servers> 
+    <!-- <plugin>
+        <groupId>com.github.github</groupId>
+        <artifactId>site-maven-plugin</artifactId>
+        <version>0.12</version>
+        <configuration>
+            <message>Maven artifacts for ${project.version}</message>
+            <noJekyll>true</noJekyll>
+            <outputDirectory>${project.build.directory}</outputDirectory>
+            <branch>refs/heads/<<em>main</em>></branch>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <merge>true</merge>
+            <repositoryName><<em>maven-artifact</em>></repositoryName>
+            <repositoryOwner><<em>amarnath-wego</em>></repositoryOwner>
+            <server>github</server>
+        </configuration>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>site</goal>
+                </goals>
+                <phase>deploy</phase>
+            </execution>
+        </executions>
+    </plugin> -->
+</settings>

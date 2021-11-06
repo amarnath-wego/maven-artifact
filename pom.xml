@@ -1,0 +1,80 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.maven.plugin</groupId>
+    <artifactId>host-maven-wego-example</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <!-- <url>https://github.com/amarnath-wego/maven-artifact.git</url> -->
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/mvn-repo</url>
+        </repository>
+    </distributionManagement>
+    
+    <build>
+    <plugins>
+        <plugin>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>2.8.2</version>
+            <configuration>
+                <altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
+            </configuration>
+        </plugin>
+        <plugin>
+                <groupId>com.github.github</groupId>
+                <artifactId>site-maven-plugin</artifactId>
+                <version>0.11</version>
+                <configuration>
+                    <!-- git commit message -->
+                    <message>Maven artifacts for ${project.version}</message>
+                    <!-- disable webpage processing -->
+                    <noJekyll>true</noJekyll>
+                    <!-- matches distribution management repository url above -->
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <!-- remote branch name -->
+                    <branch>refs/heads/master</branch>
+                    <!-- If you remove this then the old artifact will be removed and new 
+                    one will replace. But with the merge tag you can just release by changing 
+                                                        the version -->
+                    <merge>true</merge>
+                    <includes>
+                        <include>**/*</include>
+                        </includes>
+                        <!-- github repo name -->
+                        <repositoryName>maven-artifact</repositoryName>
+                        <!-- github username -->
+                        <repositoryOwner>amarnath-wego</repositoryOwner>
+                </configuration>
+                <executions>
+                    <execution>
+                            <goals>
+                                <goal>site</goal>
+                            </goals>
+                            <phase>deploy</phase>
+                    </execution>
+                </executions>
+        </plugin>
+    </plugins>
+    </build>
+
+    <repositories>
+    <repository>
+        <id>mvn-repo</id>
+        <url>https://raw.github.com/amarnath-wego/maven-artifact/mvn-repo/</url>
+        <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+        </snapshots>
+    </repository>
+</repositories>
+
+    <properties>
+        <!-- github server corresponds to entry in ~/.m2/settings.xml -->
+        <github.global.server>github</github.global.server>
+    </properties>
+</project>
