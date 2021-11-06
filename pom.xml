@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.maven.plugin</groupId>
-    <artifactId>host-maven-wego-example</artifactId>
+    <groupId>com.wego.maven.plugin</groupId>
+    <artifactId>maven-artifact</artifactId>
     <version>1.0-SNAPSHOT</version>
     <!-- <url>https://github.com/amarnath-wego/maven-artifact.git</url> -->
 
@@ -12,7 +12,7 @@
         <repository>
             <id>internal.repo</id>
             <name>Temporary Staging Repository</name>
-            <url>file://${project.build.directory}/mvn-repo</url>
+            <url>file://${project.build.directory}/target/mvn-repo</url>
         </repository>
     </distributionManagement>
     
@@ -35,9 +35,9 @@
                     <!-- disable webpage processing -->
                     <noJekyll>true</noJekyll>
                     <!-- matches distribution management repository url above -->
-                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <outputDirectory>${project.build.directory}/mvn-repo/</outputDirectory>
                     <!-- remote branch name -->
-                    <branch>refs/heads/master</branch>
+                    <branch>refs/heads/mvn-repo</branch>
                     <!-- If you remove this then the old artifact will be removed and new 
                     one will replace. But with the merge tag you can just release by changing 
                                                         the version -->
@@ -61,17 +61,6 @@
         </plugin>
     </plugins>
     </build>
-
-    <repositories>
-    <repository>
-        <id>mvn-repo</id>
-        <url>https://raw.github.com/amarnath-wego/maven-artifact/mvn-repo/</url>
-        <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-        </snapshots>
-    </repository>
-</repositories>
 
     <properties>
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
