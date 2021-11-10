@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wego.maven</groupId>
     <artifactId>maven-artifact</artifactId>
-    <version>2-SNAPSHOT</version>
+    <version>2</version>
     <url>https://github.com/amarnath-wego/maven-artifact.git</url>
 
     <scm>
         <url>https://github.com/amarnath-wego/maven-artifact.git</url>
         <connection>scm:git:git@github.com:amarnath-wego/maven-artifact.git</connection>
         <developerConnection>scm:git:git@github.com:amarnath-wego/maven-artifact.git</developerConnection>
-      <tag>1</tag>
+      <tag>maven-artifact-2</tag>
   </scm>
 
     <distributionManagement>
