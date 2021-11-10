@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.wego.maven</groupId>
+  <artifactId>maven-artifact</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20211110085041</lastUpdated>
+  </versioning>
+</metadata>
